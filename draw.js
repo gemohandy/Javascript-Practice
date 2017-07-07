@@ -2,6 +2,7 @@ update=false;
 
 fillStyles = ["#000000", "#FF0000", "#FFFF00", "#00FF00", "#00FFFF", "#0000FF", "#FF00FF", "#FFFFFF"];
 curStyle = 0;
+var prevMousePos;
 
 function setupCanvas(){
   c = document.getElementById("drawScreen");
@@ -28,6 +29,7 @@ function setupCanvas(){
 
 function startupdate(event){
   update = true;
+  prevMousePos = getMouseOnCanvas(event);
   updateCanvas(event);
 }
 
@@ -38,13 +40,17 @@ function stopUpdate(){
 function updateCanvas(event){
   if(update){
     mousePos = getMouseOnCanvas(event);
-    if(mousePos.x < 512){
+    if(mousePos.x + 3 < 512){
       c = document.getElementById("drawScreen");
       var context = c.getContext("2d");
       context.beginPath();
-      context.arc(mousePos.x, mousePos.y, 3, 0, 2*Math.PI);
-      context.fillStyle = fillStyles[curStyle];
-      context.fill();
+      context.moveTo(prevMousePos.x, prevMousePos.y);
+      context.lineTo(mousePos.x, mousePos.y);
+      context.lineCap = "round";
+      context.lineWidth = 6;
+      context.strokeStyle = fillStyles[curStyle];
+      context.stroke();
+      prevMousePos = mousePos;
     }
     else{
       //They clicked on the menu somewhere! We need to know where!

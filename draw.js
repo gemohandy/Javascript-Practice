@@ -2,7 +2,8 @@ update=false;
 
 fillStyles = ["#000000", "#FF0000", "#FFFF00", "#00FF00", "#00FFFF", "#0000FF", "#FF00FF", "#FFFFFF"];
 curStyle = 0;
-var prevMousePos;
+mode = 0;
+var prevMousePos, prevState;
 
 function setupCanvas(){
   c = document.getElementById("drawScreen");
@@ -25,11 +26,33 @@ function setupCanvas(){
   context.fillRect(540,314,72,36);
   context.fillStyle = "#FFFFFF";
   context.fillRect(540,366,72,36);
+  context.fillRect(520,450,50,50);
+  context.fillRect(580,450,50,50);
+  context.fillStyle = "#000000";
+  context.fillRect(590,465,30,20);
+  context.moveTo(525,493);
+  context.lineTo(525,480);
+  context.lineTo(538,493);
+  context.lineTo(525,480);
+  context.lineTo(549,456);
+  context.lineTo(564,473);
+  context.lineTo(538,493);
+  context.lineTo(525,493);
+  context.stroke();
+  context.beginPath();
+  context.moveTo(525,493);
+  context.lineTo(525, 488);
+  context.lineTo(530, 493);
+  context.closePath();
+  context.fill();
 }
 
 function startupdate(event){
   update = true;
   prevMousePos = getMouseOnCanvas(event);
+  c = document.getElementById("drawScreen");
+  context = c.getContext("2d");
+  prevState = context.getImageData(0,0,512,512);
   updateCanvas(event);
 }
 
@@ -43,14 +66,22 @@ function updateCanvas(event){
     if(mousePos.x + 3 < 512){
       c = document.getElementById("drawScreen");
       var context = c.getContext("2d");
-      context.beginPath();
-      context.moveTo(prevMousePos.x, prevMousePos.y);
-      context.lineTo(mousePos.x, mousePos.y);
-      context.lineCap = "round";
-      context.lineWidth = 6;
-      context.strokeStyle = fillStyles[curStyle];
-      context.stroke();
-      prevMousePos = mousePos;
+      switch(mode){
+        case 0:
+          context.beginPath();
+          context.moveTo(prevMousePos.x, prevMousePos.y);
+          context.lineTo(mousePos.x, mousePos.y);
+          context.lineCap = "round";
+          context.lineWidth = 6;
+          context.strokeStyle = fillStyles[curStyle];
+          context.stroke();
+          prevMousePos = mousePos;
+          break;
+        case 1:
+          context.putImageData(prevState,0,0);
+          context.fillStyle = fillStyles[curStyle];
+          context.fillRect(prevMousePos.x, prevMousePos.y, mousePos.x-prevMousePos.x, mousePos.y-prevMousePos.y);
+      }
     }
     else{
       //They clicked on the menu somewhere! We need to know where!
@@ -87,6 +118,14 @@ function updateCanvas(event){
 
         case mousePos.y > 364 && mousePos.y < 400 && mousePos.x>28 && mousePos.x < 100:
           curStyle = 7;
+          break;
+
+        case mousePos.y > 450 && mousePos.y < 500 && mousePos.x>10 && mousePos.x < 60:
+          mode = 0;
+          break;
+
+        case mousePos.y > 450 && mousePos.y < 500 && mousePos.x>70 && mousePos.x < 120:
+          mode = 1;
           break;
       }
     }

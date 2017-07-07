@@ -61,31 +61,31 @@ function updateCanvas(event){
           curStyle = 0;
           break;
 
-        case mousePos.y > 78 && mousePos.y < 114 && mousePos.x>28 && mousePos.x < 100:
+        case mousePos.y > 64 && mousePos.y < 100 && mousePos.x>28 && mousePos.x < 100:
           curStyle = 1;
           break;
 
-        case mousePos.y > 142 && mousePos.y < 178 && mousePos.x>28 && mousePos.x < 100:
+        case mousePos.y > 114 && mousePos.y < 150 && mousePos.x>28 && mousePos.x < 100:
           curStyle = 2;
           break;
 
-        case mousePos.y > 206 && mousePos.y < 242 && mousePos.x>28 && mousePos.x < 100:
+        case mousePos.y > 164 && mousePos.y < 200 && mousePos.x>28 && mousePos.x < 100:
           curStyle = 3;
           break;
 
-        case mousePos.y > 270 && mousePos.y < 306 && mousePos.x>28 && mousePos.x < 100:
+        case mousePos.y > 214 && mousePos.y < 250 && mousePos.x>28 && mousePos.x < 100:
           curStyle = 4;
           break;
 
-        case mousePos.y > 334 && mousePos.y < 370 && mousePos.x>28 && mousePos.x < 100:
+        case mousePos.y > 264 && mousePos.y < 300 && mousePos.x>28 && mousePos.x < 100:
           curStyle = 5;
           break;
 
-        case mousePos.y > 398 && mousePos.y < 434 && mousePos.x>28 && mousePos.x < 100:
+        case mousePos.y > 314 && mousePos.y < 350 && mousePos.x>28 && mousePos.x < 100:
           curStyle = 6;
           break;
 
-        case mousePos.y > 464 && mousePos.y < 500 && mousePos.x>28 && mousePos.x < 100:
+        case mousePos.y > 364 && mousePos.y < 400 && mousePos.x>28 && mousePos.x < 100:
           curStyle = 7;
           break;
       }

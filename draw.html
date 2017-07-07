@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Time To Draw!</title>
+    <link rel="stylesheet" type="text/css" href="drawStyle.css">
+    <script src="draw.js" type="text/javascript"></script>
+  </head>
+
+  <body onload="setupCanvas();">
+    <canvas id="drawScreen" width="640px" height="512px" onmousedown="startupdate(event);" onmouseout="stopUpdate();" onmouseup="stopUpdate()" onmousemove="updateCanvas(event)"></canvas>
+  </body>
+</html>

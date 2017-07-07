@@ -12,19 +12,19 @@ function setupCanvas(){
   context.fillStyle = "#000000";
   context.fillRect(540,14,72,36);
   context.fillStyle = "#FF0000";
-  context.fillRect(540,78,72,36);
+  context.fillRect(540,64,72,36);
   context.fillStyle = "#FFFF00";
-  context.fillRect(540,142,72,36);
+  context.fillRect(540,114,72,36);
   context.fillStyle = "#00FF00";
-  context.fillRect(540,206,72,36);
+  context.fillRect(540,164,72,36);
   context.fillStyle = "#00FFFF";
-  context.fillRect(540,270,72,36);
+  context.fillRect(540,214,72,36);
   context.fillStyle = "#0000FF";
-  context.fillRect(540,334,72,36);
+  context.fillRect(540,264,72,36);
   context.fillStyle = "#FF00FF";
-  context.fillRect(540,398,72,36);
+  context.fillRect(540,314,72,36);
   context.fillStyle = "#FFFFFF";
-  context.fillRect(540,464,72,36);
+  context.fillRect(540,366,72,36);
 }
 
 function startupdate(event){

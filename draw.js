@@ -73,7 +73,9 @@ function setupCanvas(){
 
 function startupdate(event){
   update = true;
-  prevMousePos = getMouseOnCanvas(event);
+  if(gotMouseOnCanvas(event).x > 512){
+    prevMousePos = getMouseOnCanvas(event);
+  }
   c = document.getElementById("drawScreen");
   context = c.getContext("2d");
   prevState = context.getImageData(0,0,512,512);

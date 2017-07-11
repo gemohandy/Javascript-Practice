@@ -5,6 +5,9 @@ curStyle = 0;
 mode = 0;
 var prevMousePos, prevState;
 
+sizes = [2,6,10];
+size = 1;
+
 function setupCanvas(){
   c = document.getElementById("drawScreen");
   context = c.getContext("2d");
@@ -63,7 +66,7 @@ function stopUpdate(){
 function updateCanvas(event){
   if(update){
     mousePos = getMouseOnCanvas(event);
-    if(mousePos.x + 3 < 512){
+    if(mousePos.x + 0.5 * sizes[size] < 512){
       c = document.getElementById("drawScreen");
       var context = c.getContext("2d");
       switch(mode){

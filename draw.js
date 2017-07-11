@@ -9,10 +9,12 @@ sizes = [2,6,10];
 size = 1;
 
 function setupCanvas(){
+  //Main Screen
   c = document.getElementById("drawScreen");
   context = c.getContext("2d");
   context.fillStyle = "#666666";
   context.fillRect(512,0,128,512);
+  //Colour Buttons
   context.fillStyle = "#000000";
   context.fillRect(540,14,72,36);
   context.fillStyle = "#FF0000";
@@ -29,6 +31,7 @@ function setupCanvas(){
   context.fillRect(540,314,72,36);
   context.fillStyle = "#FFFFFF";
   context.fillRect(540,366,72,36);
+  //Style Buttons - Pen and Rectangle
   context.fillRect(520,450,50,50);
   context.fillRect(580,450,50,50);
   context.fillStyle = "#000000";
@@ -48,6 +51,24 @@ function setupCanvas(){
   context.lineTo(530, 493);
   context.closePath();
   context.fill();
+  //Size Buttons
+  context.fillStyle = "#FFFFFF";
+  context.fillRect(520, 410, 30, 30);
+  context.fillRect(560, 410, 30, 30);
+  context.fillRect(600, 410, 30, 30);
+  context.fillStyle = "#000000";
+  context.beginPath();
+  context.arc(535, 425, 1, 0, Math.PI*2)
+  context.fill();
+  context.closePath();
+  context.beginPath();
+  context.arc(575, 425, 3, 0, Math.PI*2)
+  context.fill();
+  context.closePath();
+  context.beginPath();
+  context.arc(615, 425, 5, 0, Math.PI*2)
+  context.fill();
+  context.closePath();
 }
 
 function startupdate(event){
@@ -75,7 +96,7 @@ function updateCanvas(event){
           context.moveTo(prevMousePos.x, prevMousePos.y);
           context.lineTo(mousePos.x, mousePos.y);
           context.lineCap = "round";
-          context.lineWidth = 6;
+          context.lineWidth = sizes[size];
           context.strokeStyle = fillStyles[curStyle];
           context.stroke();
           prevMousePos = mousePos;
@@ -130,6 +151,22 @@ function updateCanvas(event){
         case mousePos.y > 450 && mousePos.y < 500 && mousePos.x>70 && mousePos.x < 120:
           mode = 1;
           break;
+
+        case mousePos.y > 410 && mousePos.y < 440:
+          console.log(mousePos.x);
+          switch(true){
+            case mousePos.x > 8 && mousePos.x < 38:
+              size = 0;
+              break;
+
+            case mousePos.x > 48 && mousePos.x < 78:
+              size = 1;
+              break;
+
+            case mousePos.x > 88 && mousePos.x < 128:
+              size = 2;
+              break;
+          }
       }
     }
   }

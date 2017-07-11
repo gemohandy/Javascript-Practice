@@ -110,7 +110,6 @@ function updateCanvas(event){
     else{
       //They clicked on the menu somewhere! We need to know where!
       mousePos.x -= 512;
-      console.log(mousePos);
       switch(true){
         case mousePos.y > 14 && mousePos.y < 50 && mousePos.x>28 && mousePos.x < 100:
           curStyle = 0;
@@ -153,7 +152,6 @@ function updateCanvas(event){
           break;
 
         case mousePos.y > 410 && mousePos.y < 440:
-          console.log(mousePos.x);
           switch(true){
             case mousePos.x > 8 && mousePos.x < 38:
               size = 0;
@@ -167,6 +165,7 @@ function updateCanvas(event){
               size = 2;
               break;
           }
+          break;
       }
     }
   }

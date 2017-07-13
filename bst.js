@@ -4,7 +4,15 @@ sortedArray = unsortArray.sort(function(a,b){return a-b;});
 console.log(sortedArray);
 
 //Tree:
-//33, 4, 2, 1, 3, 23, 16, 77, 45, 42, 56, 100, 99
+/*  (2)
+(1)     (45)
+    (33)    (100)
+  (23)(42) (99)
+ (3)      (56)
+  (4)      (77)
+   (16)
+
+*/
 
 function binaryOrder(sortArray){
   if(sortArray<=1){
